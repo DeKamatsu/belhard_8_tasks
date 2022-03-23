@@ -26,3 +26,66 @@
 
 Названия книг в сообщениях должны быть отсортированы по алфавиту.
 """
+
+
+class Person:
+
+    fullname: str
+    phone: str
+
+    def __init__(self, fullname, phone):
+        self.fullname = fullname
+        self.phone = phone
+
+
+class LibraryReader(Person):
+
+    uid: int
+    books: set
+
+    def __init__(self, fullname, phone, uid):
+        super().__init__(fullname, phone)
+        self.uid = uid
+        self.books = set()
+
+    def take_books(self, args):
+        for b in args:
+            self.books.add(b)
+        if 0 < len(args) < 4:
+            print(f"{self.fullname} взял(а) книги: {b}")
+        elif len(args) > 0:
+            print(f"{self.fullname} взял(а) {len(args)} книги.")
+
+    def return_book(self, args):
+        for b in args:
+            if b not in self.books:
+                raise ValueError(f"Петров В. В. не брал: {b}")
+        for b in args:
+            self.books.remove(b)
+        if 0 < len(args) < 4:
+            for b in args:
+                print(f"{self.fullname} вернул(а) книги: {b}")
+        elif len(args) > 0:
+            print(f"{self.fullname} вернул(а) {len(args)} книги.")
+
+# library_reader = LibraryReader("Fullname", "375557894545", 123)
+# print(library_reader.fullname)
+# print(library_reader.phone)
+# print(library_reader.uid)
+# print(library_reader.books)
+#
+# expected = {"Азбука", "Буратино"}
+# library_reader.take_books(expected)
+# print(library_reader.books)
+#
+# new_books = {"Весна", "Дом у озера", "Оно", "Страна радости"}
+# library_reader.take_books(new_books)
+# print(library_reader.books)
+#
+# expected = {"Азбука", "Буратино"}
+# library_reader.return_book(expected)
+# print(library_reader.books)
+#
+# new_books = {"Весна", "Дом у озера", "Страна радости", "Оно"}
+# library_reader.return_book(new_books)
+# print(library_reader.books)

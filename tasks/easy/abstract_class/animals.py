@@ -15,6 +15,7 @@ says таким образом, чтобы он возвращал строку 
 
 from abc import ABC, abstractmethod
 
+
 class Animal(ABC):
     name: str
 
