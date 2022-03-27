@@ -101,7 +101,6 @@ if __name__ == '__main__':
     print(warrior.name == "war_name")
     print(warrior.health_points == 100)
 
-
     attacker = Warrior("attacker")
     print(hasattr(attacker, "hit"))
 
@@ -113,7 +112,6 @@ if __name__ == '__main__':
     defender.health_points = 0
     # while ValueError:
     #     attacker.hit(defender)
-
 
     empty_arena = Arena()
 
@@ -128,8 +126,6 @@ if __name__ == '__main__':
     print(len(arena_with_warriors.warriors) == 1)
     print(warrior in arena_with_warriors.warriors)
 
-
-
     arena = Arena()
     warrior = Warrior("Warrior")
 
@@ -139,13 +135,11 @@ if __name__ == '__main__':
 
     # arena.add_warrior(warrior)
 
-
     arena = Arena()
     warrior = Warrior("Warrior")
     arena.warriors.append(warrior)
 
     print(warrior is arena.choose_warrior())
-
 
     arena = Arena()
     # arena.battle()

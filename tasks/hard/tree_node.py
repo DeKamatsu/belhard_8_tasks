@@ -34,12 +34,11 @@ class BinaryTree:
                 self.right_subtree.add(key)
 
     def __str__(self, count=0, lst=[]):
-        lst.append(f"{' ' * count * 2}{self.key}\n")
         if self.left_subtree is not None:
             self.left_subtree.__str__(count + 1)
+        lst.append(f"{' ' * count * 2}{self.key}\n")
         if self.right_subtree is not None:
             self.right_subtree.__str__(count + 1)
-
         return ''.join(lst)
 
 # bool Contains(T value)
@@ -71,6 +70,8 @@ if __name__ == '__main__':
     bt.add(7)
     bt.add(13)
     bt.add(2)
+    bt.add(1)
     bt.add(4)
+    bt.add(15)
 
     print(bt)

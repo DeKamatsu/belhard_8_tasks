@@ -67,4 +67,3 @@ class Person:
             print(f"{c}) {'house' if type(h) == House else 'townhouse'} {h.area} sq.m. area "
                   f"at the address: {h.address}.")
             c += 1
-

@@ -107,8 +107,6 @@ if __name__ == '__main__':
     )
     print(result == "Fullname вернул(а) 4 книги")
 
-
     print(len(library_reader.books) == 2)
     result = library_reader.return_book("Азбука", "Буратино")
     print(result == "Fullname вернул(а) книги: Азбука, Буратино")
-

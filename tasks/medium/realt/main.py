@@ -38,4 +38,3 @@ if __name__ == '__main__':
     print(f"{Valera.name} worked for {years_counter} years to buy all real estate on the market!")
 
     Valera.info()
-
