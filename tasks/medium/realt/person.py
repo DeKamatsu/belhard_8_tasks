@@ -38,14 +38,33 @@ class Person:
         self.realty = list()
 
     def earn_money(self, income):
-        self.money += income
+        if income >= 0:
+            self.money += income
+        else:
+            raise ValueError("It's subzero income. Impossible!")
 
     def make_deal(self, house):
-        if type(house) == House or type(house) == Townhouse:
-            if self.money >= house.cost:
-                self.money -= house.cost
-                self.realty.append(house)
+        if house.sold is True:
+            print('The house was sold earlier!')
+        else:
+            if type(house) == House or type(house) == Townhouse:
+                if self.money >= house.cost:
+                    self.money -= house.cost
+                    house.sold = True
+                    self.realty.append(house)
+                    print(f"it's a deal! {self.name} bought a {'house' if type(house) == House else 'townhouse'} "
+                          f"{house.area} sq.m. at the address: {house.address}.")
+                else:
+                    print(f"{self.name} hasn't enough money to buy a {'house' if type(house) == House else 'townhouse'} "
+                          f"{house.area} sq.m. at the address: {house.address}.")
             else:
-                print(f"{self.name} hasn't enough money.")
-            print(f"{self.name} is trying to buy not a house.")
+                print(f"{self.name} is trying to buy not a house.")
+
+    def info(self):
+        print(f"Client: {self.name}, money: {self.money} units. Real estate owned:")
+        c = 1
+        for h in self.realty:
+            print(f"{c}) {'house' if type(h) == House else 'townhouse'} {h.area} sq.m. area "
+                  f"at the address: {h.address}.")
+            c += 1
 

@@ -1,9 +1,8 @@
+from gardener import Gardener
 from tomato import Tomato
 from tomato_bush import TomatoBush
-from gardener import Gardener
 
 if __name__ == '__main__':
-    pass
 
     # ```
     # выполнить следующие задания:

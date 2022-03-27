@@ -1,6 +1,3 @@
-from tomato_bush import TomatoBush
-
-
 class Gardener:
 
     name: str
@@ -13,8 +10,6 @@ class Gardener:
     def work(self):
         for p in self.plants:
             p.grow_all()
-            # for i in p.give_away_all():
-                # print("Зрелость помидорки", i)
 
     def harvest(self):
         ripe_tomato_list = []
@@ -36,5 +31,4 @@ class Gardener:
 
 
 if __name__ == "__main__":
-
     pass

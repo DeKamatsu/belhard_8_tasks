@@ -35,15 +35,16 @@
 
 from abc import ABC, abstractmethod
 
+
 class Transport(ABC):
 
     brand: str
-    model:str
+    model: str
     issue_year: int
     color: str
     mileage: int
 
-    def __init__(self,  brand, model, issue_year, color):
+    def __init__(self, brand, model, issue_year, color):
         self.brand = brand
         self.model = model
         self.issue_year = issue_year

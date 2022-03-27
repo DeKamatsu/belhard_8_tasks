@@ -23,22 +23,22 @@ class Animal(ABC):
         self.name = name
 
     @abstractmethod
-    def say(self):
+    def says(self):
         pass
 
 
 class Cat(Animal):
-    def say(self):
+    def says(self):
         return f'{self.name} - кошка. Говорит МЯУ!'
 
 
 class Dog(Animal):
-    def say(self):
+    def says(self):
         return f'{self.name} - собака. Говорит ГАВ!'
 
 
 class Cow(Animal):
-    def say(self):
+    def says(self):
         return f'{self.name} - корова. Говорит МУ!'
 
 

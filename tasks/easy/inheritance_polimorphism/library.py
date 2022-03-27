@@ -48,44 +48,67 @@ class LibraryReader(Person):
         self.uid = uid
         self.books = set()
 
-    def take_books(self, args):
+    def take_books(self, *args):
+        if type(args[0]) == set:
+            args = args[0]
         for b in args:
             self.books.add(b)
         if 0 < len(args) < 4:
-            print(f"{self.fullname} взял(а) книги: {b}")
-        elif len(args) > 0:
-            print(f"{self.fullname} взял(а) {len(args)} книги.")
+            return f"{self.fullname} взял(а) книги: {', '.join(sorted(args))}"
+        elif len(args) >= 4:
+            return f"{self.fullname} взял(а) {len(args)} книги"
 
-    def return_book(self, args):
+    def return_book(self, *args):
+        if type(args[0]) == set:
+            args = args[0]
+        is_error = False
         for b in args:
-            if b not in self.books:
-                raise ValueError(f"Петров В. В. не брал: {b}")
-        for b in args:
-            self.books.remove(b)
-        if 0 < len(args) < 4:
+            if b not in sorted(self.books):  # i'm not sure in conditions of the technical task,
+                # but set return elements in random order so i had to sort it to pass tests
+                is_error += True
+                raise ValueError(f"{self.fullname} не брал: {b}")
+        if is_error is False:
             for b in args:
-                print(f"{self.fullname} вернул(а) книги: {b}")
-        elif len(args) > 0:
-            print(f"{self.fullname} вернул(а) {len(args)} книги.")
+                self.books.remove(b)
+        if 0 < len(args) < 4:
+            return f"{self.fullname} вернул(а) книги: {', '.join(args)}"
+        elif len(args) >= 4:
+            return f"{self.fullname} вернул(а) {len(args)} книги"
 
-# library_reader = LibraryReader("Fullname", "375557894545", 123)
-# print(library_reader.fullname)
-# print(library_reader.phone)
-# print(library_reader.uid)
-# print(library_reader.books)
-#
-# expected = {"Азбука", "Буратино"}
-# library_reader.take_books(expected)
-# print(library_reader.books)
-#
-# new_books = {"Весна", "Дом у озера", "Оно", "Страна радости"}
-# library_reader.take_books(new_books)
-# print(library_reader.books)
-#
-# expected = {"Азбука", "Буратино"}
-# library_reader.return_book(expected)
-# print(library_reader.books)
-#
-# new_books = {"Весна", "Дом у озера", "Страна радости", "Оно"}
-# library_reader.return_book(new_books)
-# print(library_reader.books)
+
+if __name__ == '__main__':
+
+    library_reader = LibraryReader("Fullname", "375557894545", 123)
+
+    expected = {"Азбука", "Буратино"}
+
+    result = library_reader.take_books(*expected)
+
+    print(library_reader.books == expected)
+
+    new_books = {"Весна", "Дом у озера", "Оно", "Страна радости"}
+
+    expected.update(new_books)
+    result = library_reader.take_books(*new_books)
+    result == "Fullname взял(а) 4 книги"
+    print(library_reader.books == expected)
+
+    try:
+        library_reader.return_book("Азбука", "Страна радости")
+    except ():
+        print("Error")
+
+    library_reader = LibraryReader("Fullname", "375557894545", 123)
+    library_reader.books = {
+        "Азбука", "Буратино", "Весна", "Дом у озера", "Оно", "Страна радости"
+    }
+    result = library_reader.return_book(
+        "Весна", "Дом у озера", "Оно", "Страна радости"
+    )
+    print(result == "Fullname вернул(а) 4 книги")
+
+
+    print(len(library_reader.books) == 2)
+    result = library_reader.return_book("Азбука", "Буратино")
+    print(result == "Fullname вернул(а) книги: Азбука, Буратино")
+

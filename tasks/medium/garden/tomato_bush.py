@@ -51,12 +51,12 @@ if __name__ == "__main__":
     t_b2 = TomatoBush(t4, t5, t6, t7)
 
     # print tomatoes of each bushes
-    print('1'*20)
+    print('1' * 20)
     for y in t_b.give_away_all():
         print(y)
     print(t_b.all_are_ripe())
 
-    print('2'*20)
+    print('2' * 20)
     for y in t_b2.give_away_all():
         print(y)
     print(t_b2.all_are_ripe())
@@ -70,12 +70,12 @@ if __name__ == "__main__":
     print(f"tomato bush #1 is rape on {c} step")
 
     # print tomatoes of each bushes, on 1-st bush tomatoes disappears
-    print('3'*20)
+    print('3' * 20)
     for y in t_b.give_away_all():
         print(y)
     print(t_b.all_are_ripe())
 
-    print('4'*20)
+    print('4' * 20)
     for y in t_b2.give_away_all():
         print(y)
     print(t_b2.all_are_ripe())
@@ -83,12 +83,12 @@ if __name__ == "__main__":
     # add disappeared tomatoes on bush #1 and check: they are all ripe
     t_b = TomatoBush(t1, t2, t3)
 
-    print('5'*20)
+    print('5' * 20)
     for y in t_b.give_away_all():
         print(y)
     print(t_b.all_are_ripe())
 
-    print('6'*20)
+    print('6' * 20)
     for y in t_b2.give_away_all():
         print(y)
     print(t_b2.all_are_ripe())

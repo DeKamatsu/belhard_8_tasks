@@ -11,8 +11,16 @@ from house import House
 
 class Townhouse(House):
 
-    def __init__(self, address, cost, area=60):
+    def __init__(self, address, area, cost=0):
         super().__init__(address, area, cost)
-        self.address = address
-        self.area = area
-        self.cost = cost
+        self.sold = False
+        if cost == 0:
+            self.area = 60
+            self.cost = int(area)
+        else:
+            self.address = address
+            self.area = area
+            if int(cost) >= 0:
+                self.cost = int(cost)
+            else:
+                raise ValueError('Subzero cost is impossible.')

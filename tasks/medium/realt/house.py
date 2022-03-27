@@ -21,11 +21,16 @@ class House:
     address: str
     area: int
     cost: int
+    sold: bool
 
     def __init__(self, address, area, cost):
+        self.sold = False
         self.address = address
         self.area = area
-        self.cost = cost
+        if int(cost) >= 0:
+            self.cost = int(cost)
+        else:
+            raise ValueError('Subzero cost is impossible.')
 
     def increase_cost(self, delta):
         self.cost += delta
