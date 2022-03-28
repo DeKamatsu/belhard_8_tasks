@@ -16,7 +16,7 @@ https://tproger.ru/translations/binary-search-tree-for-beginners/
 class BinaryTree:
     left_subtree = None
     right_subtree = None
-    key: int
+    key: float
 
     def __init__(self, key):
         self.key = key
@@ -41,7 +41,16 @@ class BinaryTree:
             self.right_subtree.__str__(count + 1)
         return ''.join(lst)
 
-# bool Contains(T value)
+    def contains(self, val):
+        if self.key == val:
+            return True
+        elif val < self.key:
+            if self.left_subtree is not None:
+                return self.left_subtree.contains(val)
+        elif self.right_subtree is not None:
+            return self.right_subtree.contains(val)
+        return False
+
 #
 # bool Remove(T value)
 #
@@ -75,3 +84,11 @@ if __name__ == '__main__':
     bt.add(15)
 
     print(bt)
+
+    print(bt.contains(0))  # False
+    print(bt.contains(20))  # False
+    print(bt.contains(5))  # True
+    print(bt.contains(2))  # True
+    print(bt.contains(4))  # True
+    print(bt.contains(13))  # True
+    print(bt.contains(8))  # False
